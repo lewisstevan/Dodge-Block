@@ -1,24 +1,16 @@
 import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.Timer;
 import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
 
 //Game that encourages its user to dodge falling objects.
 //The game will speed up as lines are cleared.
@@ -26,14 +18,6 @@ import javax.swing.border.TitledBorder;
 
 public class DodgeBlockGui implements Observer
 {
-    //Variable deciding how fast the game moves
-    private int gameSpeed = 500;
-    
-    //Timer for the game, fill in the actionListener on this variable once the controller section of the program is completed.
-    Timer timer = new Timer(gameSpeed, null);
-    
-    Timer wallCreationTimer = new Timer(gameSpeed * 3, null);
-    
     //declare a new Enum describing the different game sizes
     public enum SizeOfGame 
     {
@@ -142,5 +126,4 @@ public class DodgeBlockGui implements Observer
     {
 	DodgeBlockGui run = new DodgeBlockGui();
     }
-    
 }

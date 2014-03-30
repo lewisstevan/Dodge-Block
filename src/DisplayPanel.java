@@ -1,9 +1,9 @@
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Stroke;
 import java.awt.geom.Rectangle2D;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -14,6 +14,7 @@ public class DisplayPanel extends JPanel
     private String panelName = "";
     DodgeBlockGameBoard gameBoard;
     private Rectangle2D[][] WallBlocks;
+    private Rectangle2D[] lives;
     public DisplayPanel(String panelname, DodgeBlockGameBoard theBoard)
     {
 	super();
@@ -48,6 +49,33 @@ public class DisplayPanel extends JPanel
         	 }
                rowIterator++;
 	    }   
+	}
+	
+	if (panelName.equals("lives"))
+	{
+	    int itr = 0;
+	    int numberOfLives = gameBoard.getNumberOfLives();
+	    int numberOfLivesLeft = gameBoard.getLivesLeft();
+	    gameBoard.livesBlocks();
+	    lives = gameBoard.getLives();
+	    while (itr < numberOfLivesLeft)
+	    {
+	         g2d.setColor(Color.red);
+	         g2d.fill(lives[itr]);
+	         g2d.draw(lives[itr]);
+	         itr++;
+	    }
+	    if (numberOfLives > numberOfLivesLeft)
+	    {
+		while (itr < numberOfLives)
+		{
+		    g2d.setColor(Color.red);
+		    Stroke thisStroke = new BasicStroke(2);
+		    g2d.setStroke(thisStroke);
+		    g2d.draw(lives[itr]);
+		    itr++;
+		}
+	    }
 	}
 		
     }
